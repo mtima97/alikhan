@@ -11,10 +11,14 @@ type Db struct {
 }
 
 func Init() Db {
-	connStr := "postgres://user:password@localhost:5432/registration?sslmode=disable"
+	connStr := "postgres://user:password@postgres:5432/registration?sslmode=disable"
 
 	conn, err := sql.Open("postgres", connStr)
 	if err != nil {
+		log.Fatal(err)
+	}
+
+	if err = conn.Ping(); err != nil {
 		log.Fatal(err)
 	}
 
@@ -39,10 +43,10 @@ func (db *Db) Get() ([]map[int64]string, error) {
 
 	var emails []map[int64]string
 
-	var id int64
-	var email string
-
 	if rows.Next() {
+		var id int64
+		var email string
+
 		rows.Scan(&id, &email)
 
 		emails = append(emails, map[int64]string{
