@@ -1,2 +1,16 @@
+@host=http://localhost:8009
+
 ### Тестирование эндпоинта
-GET http://localhost:8080/ping
+GET {{host}}/ping
+
+### Отправка
+POST {{host}}/save-email
+Content-Type: application/json
+
+{
+    "email": "alikosh"
+}
+
+### Получение
+GET {{host}}/get-emails
+Accept: application/json
