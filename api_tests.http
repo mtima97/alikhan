@@ -1,4 +1,4 @@
-@host=http://localhost:8009
+@host=http://localhost:8080
 
 ### Тестирование эндпоинта
 GET {{host}}/ping
