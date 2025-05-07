@@ -27,6 +27,10 @@ func main() {
 			return c.JSON(http.StatusBadRequest, response("Ошибка "+err.Error()))
 		}
 
+		if req.Email == "" {
+			return c.JSON(http.StatusBadRequest, response("Укажите почту"))
+		}
+
 		if err := db.Save(req.Email); err != nil {
 			return c.JSON(http.StatusInternalServerError, response(err.Error()))
 		}
