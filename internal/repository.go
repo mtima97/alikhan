@@ -43,7 +43,7 @@ func (db *Db) Get() ([]map[int64]string, error) {
 
 	var emails []map[int64]string
 
-	if rows.Next() {
+	for rows.Next() {
 		var id int64
 		var email string
 
