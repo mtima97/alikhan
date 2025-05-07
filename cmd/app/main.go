@@ -44,7 +44,7 @@ func main() {
 	})
 
 	if err := e.Start(":8080"); err != nil {
-		e.Logger.Fatal()
+		e.Logger.Fatal(err)
 		db.Close()
 	}
 }
