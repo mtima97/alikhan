@@ -11,7 +11,7 @@ type Db struct {
 }
 
 func Init() Db {
-	connStr := "postgres://user:password@postgres:5432/registration?sslmode=disable"
+	connStr := "postgres://user:password@localhost:5432/registration?sslmode=disable"
 
 	conn, err := sql.Open("postgres", connStr)
 	if err != nil {
